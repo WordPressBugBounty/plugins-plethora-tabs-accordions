@@ -1,0 +1,196 @@
+
+.plethoraplugins_settings-sections {
+	margin-right: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+@media all and (min-width: 66.625em) {
+	.plethoraplugins_settings-sections {
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		gap: 2rem;
+	}
+}
+@media all and (min-width: 110em) {
+	.plethoraplugins_settings-sections {
+		grid-template-columns: 1fr 1fr 1fr 1fr;
+		gap: 1rem;
+	}
+}
+
+.plethoraplugins_settings-section {
+    background: #fff;
+}
+.plethoraplugins_settings-section > h2 {
+    background: #007A8B;
+    color: #fff;
+    padding: 1rem;
+    margin: 0;
+}
+
+
+	
+.plethoraplugins_settings-section .plethoraplugins_settings-section > h2 {
+    background: #004d57;
+    font-size: 1.2em;
+    padding-top: .5em;
+    padding-bottom: .5em;
+}
+.plethoraplugins_settings-section .form-table th, 
+.plethoraplugins_settings-section .form-table td {
+    padding: .5rem 1rem;
+	width: auto;
+	vertical-align: middle;
+}
+.plethoraplugins_settings-section .form-table td {
+    white-space: nowrap;
+}
+.plethoraplugins_settings-section .form-table th {
+    width: 12em;
+    text-align: right;
+	vertical-align: middle;
+}
+
+@media screen and (max-width: 782px) {
+	.plethoraplugins_settings-section .form-table th {
+		text-align: inherit;
+	}
+	.plethoraplugins_settings-section .form-table td .plethoraplugins_pro-only {
+		position: absolute;
+		top: -.5rem;
+		right: 1rem;
+		transform: translateY(-100%);
+	}
+
+	.plethoraplugins_settings-section .form-table td {
+		position: relative;
+	}
+}
+
+.plethoraplugins_settings-section .form-table tr:nth-child(even) {
+    background-color: #f5feff;
+}
+
+.plethoraplugins_settings-section table.form-table {
+    margin: 0
+}
+.plethoraplugins_settings-form-actions {
+    display: flex;
+    justify-content: center;
+    max-width: 20rem;
+    margin: 2rem auto;
+	gap: 1rem;
+}
+
+.plethoraplugins_settings-form-actions input.plethoraplugins_settings-form-action-button,
+.plethoraplugins_settings-form-actions input.plethoraplugins_settings-form-action-button:hover,
+.plethoraplugins_settings-form-actions input.plethoraplugins_settings-form-action-button:active,
+.plethoraplugins_settings-form-actions input.plethoraplugins_settings-form-action-button:focus {
+    padding-left: 2em;
+    padding-right: 2em;
+    display: inline-block;
+    text-decoration: none;
+    font-size: x-large;
+    line-height: 2.15384615;
+    min-height: 30px;
+    margin: 0;
+    padding: 0 10px;
+    cursor: pointer;
+    border-width: 1px;
+    border-style: solid;
+    -webkit-appearance: none;
+    border-radius: 3px;
+    white-space: nowrap;
+    box-sizing: border-box;
+    vertical-align: middle;
+	background: #000;
+	color: #fff;
+}
+.plethoraplugins_settings-form-actions input.plethoraplugins_settings-form-action-button.plethoraplugins_settings-form-save-button {
+    font-size: xx-large;
+	background: #006370;
+	color: #fff;
+}
+.wp-core-ui .plethoraplugins_settings-section .button, 
+.wp-core-ui .plethoraplugins_settings-section .button-secondary {
+    color: #004d57;
+    border-color: #004d57;
+}
+.plethoraplugins_svg-selector-preview svg {
+    width: 100%;
+    height: 100%;
+}
+
+.plethoraplugins_svg-selector-preview {
+    width: 1rem;
+    height: 1rem;
+    display: inline-block;
+    margin-right: 1rem;
+}
+.plethoraplugins_svg-selector-preview svg {
+	fill: currentColor;
+	stroke: currentColor;
+}
+.plethoraplugins_svg-selector-button {
+	cursor: pointer;
+}
+.plethoraplugins_svg-selector-button:disabled {
+	cursor: not-allowed;
+}
+
+.plethoraplugins_pro-only {
+	color: red;
+}
+
+.plethoraplugins_visually-hidden,
+#plethoraplugins_tabs_setting_accordionicontwostateclosed,
+#plethoraplugins_tabs_setting_accordionicontwostateopen,
+#plethoraplugins_tabs_setting_accordioniconsinglestate {
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  height: 1px;
+  overflow: hidden;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+}
+
+.plethoraplugins_svg-icon-button svg {
+    width: 100%;
+    height: 100%;
+    fill: currentColor;
+    stroke: currentColor;
+}
+
+.plethoraplugins_svg-icon-button {
+    width: 24px;
+    height: 24px;
+	color: #007A8B;
+	background: #fff;
+    padding: 0;
+    border: none;
+    cursor: pointer;
+}
+
+.plethoraplugins_svg-icon-button-list {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+#plethoraplugins__custom_icon_input {
+	resize: horizontal;
+	height: 100%;
+    width: 15rem;
+}
+#plethoraplugins__custom_icon_input_wrapper {
+    display: flex;
+    gap: 0.5rem;
+    background: #efefef;
+    padding: 2px;
+}
+#plethoraplugins_tabs_setting_mobilebreakpoint {
+    width: 5rem;
+    margin-right: .5rem;
+}
