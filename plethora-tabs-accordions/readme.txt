@@ -2,7 +2,7 @@
 Contributors:      plethoraplugins
 Tags:              block
 Tested up to:      6.7
-Stable tag:        1.3
+Stable tag:        1.4
 License:           GPL-2.0-or-later
 License URI:       https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -138,7 +138,7 @@ Please note that this plugin does not support nesting accordions inside accordio
 = 1.1.5 =
 Tested with WordPress 6.7.
 
-= 1.3 =
+= 1.3 and 1.4 =
 addressed low-level content escape vulnerability
 
 
