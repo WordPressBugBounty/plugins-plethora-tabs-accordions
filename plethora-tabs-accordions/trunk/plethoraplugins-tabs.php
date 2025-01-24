@@ -4,7 +4,7 @@
  * Description:       User-friendly tabs or accordion block for the default Wordpress editor. Quickly switch between horizontal/vertical or accordion layout, change the plugin theme, and edit tab labels and content and see the effects immediately in Live Preview. You can select one of the predefined themes Basic and Tabby, and a Minimal theme that makes it easy to add your own styles.  Visit  <a href="https://plethoraplugins.com/tabs-accordions/" target="_blank">plethoraplugins.com/tabs-accordions</a> for the demos and a handy theme customizer!
  * Requires at least: 5.9
  * Requires PHP:      7.0
- * Version:           1.2
+ * Version:           1.4.1
  * Plugin URI: 		  https://plethoraplugins.com/tabs-accordions/
  * Author:            Plethora Plugins
  * Author URI:        https://plethoraplugins.com
@@ -420,14 +420,14 @@ function plethoraplugins_tab_render_callback( $block_attributes, $content ) {
             $label = (isset($block_attributes['label']) && $block_attributes['label']) ? $block_attributes['label'] : __('Tab');
             $anchor = isset($block_attributes['anchor']) ? $block_attributes['anchor'] : null;
             $finalAnchor = $anchor ? $anchor : plethoraplugins_tabs_generate_anchor($label);
-            return '<div id="' . $finalAnchor . '" class="pds-accordion__item pds-js-accordion-item pds-no-js" data-pds-tabs--initially-open="' . $initialActive . '" data-pds-tabs--click-to-close="true" data-pds-tabs--auto-close="' . $accordionAutoClose . '" data-pds-tabs--scroll="false" data-pds-tabs--scroll-offset="0" ' . plethoraplugins_sprint_icon_atts( $block_attributes ) . '>
-                    <div id="at-' . $finalAnchor . '" class="pds-accordion__title pds-js-accordion-controller" ><span class="pds-accordion__heading" role="heading" aria-level="' . $accordionHeadingLevelInteger . '">' . $label . '</span><span class="pds-accordion__icon" role="presentation" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 7.4099998" width=".75rem" height=".75rem"><path d="M12 1.41 10.59 0 6 4.58 1.41 0 0 1.41l6 6z" fill="currentColor"/></svg></span></div>
-                    <div id="ac-' . $finalAnchor . '" class="pds-accordion__content">
+            return '<div id="' . esc_attr($finalAnchor) . '" class="pds-accordion__item pds-js-accordion-item pds-no-js" data-pds-tabs--initially-open="' . esc_attr($initialActive) . '" data-pds-tabs--click-to-close="true" data-pds-tabs--auto-close="' . esc_attr($accordionAutoClose) . '" data-pds-tabs--scroll="false" data-pds-tabs--scroll-offset="0" ' . plethoraplugins_sprint_icon_atts( $block_attributes ) . '>
+                    <div id="at-' . esc_attr($finalAnchor) . '" class="pds-accordion__title pds-js-accordion-controller" ><span class="pds-accordion__heading" role="heading" aria-level="' . esc_attr($accordionHeadingLevelInteger) . '">' . $label . '</span><span class="pds-accordion__icon" role="presentation" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 7.4099998" width=".75rem" height=".75rem"><path d="M12 1.41 10.59 0 6 4.58 1.41 0 0 1.41l6 6z" fill="currentColor"/></svg></span></div>
+                    <div id="ac-' . esc_attr($finalAnchor) . '" class="pds-accordion__content">
                         ' . $content . '
                     </div>
                 </div>';
         }
-        return '<div class="' . $blockClassNames . '"  data-pds-tabs--accordion-initially-open="' . $initialActive . '" >' . $content . '</div>';
+        return '<div class="' . esc_attr($blockClassNames) . '"  data-pds-tabs--accordion-initially-open="' . esc_attr($initialActive) . '" >' . $content . '</div>';
 }
 function plethoraplugins_tabs_render_callback( $block_attributes, $content ) {
     //this renders the plugin server side so that we can update the block HTML without having to constantly chase deprecated markup
@@ -527,7 +527,7 @@ function plethoraplugins_tabs_render_callback( $block_attributes, $content ) {
     }
               $o .= '</ul>
             </div>
-            <div class="' . $contentClass . '" ' . ($contentStyle ? 'style="' . $contentStyle . '"' : '') . '>
+            <div class="' . esc_attr($contentClass) . '" ' . ($contentStyle ? 'style="' . esc_attr($contentStyle) . '"' : '') . '>
                 ' . $content . '
             </div>
         </div>

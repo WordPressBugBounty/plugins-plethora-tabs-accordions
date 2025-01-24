@@ -138,7 +138,7 @@ Please note that this plugin does not support nesting accordions inside accordio
 = 1.1.5 =
 Tested with WordPress 6.7.
 
-= 1.3 and 1.4 =
+= 1.3 and 1.4.x =
 addressed low-level content escape vulnerability
 
 
