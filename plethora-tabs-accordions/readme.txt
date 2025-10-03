@@ -1,8 +1,8 @@
-=== Plethora Plugins Tabs + Accordions ===
-Contributors:      plethoraplugins
+=== Plethora Plugins Tabs + Accordions (Pro) ===
+Contributors:      Plethora Plugins
 Tags:              block
-Tested up to:      6.8
-Stable tag:        1.4.2
+Tested up to:      6.8.2
+Stable tag:        2.1
 License:           GPL-2.0-or-later
 License URI:       https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -10,19 +10,21 @@ Gutenberg-native block for responsive and accessible tabs; no need for shortcode
 
 == Description ==
 
-An accessibility-focused user-friendly tabs or accordion block for the default Wordpress editor.
+* A user-friendly tabs or accordion block for the default Wordpress editor. 
+* Designed with accessibility in mind
+* Quickly switch between horizontal/vertical or accordion layout
+* Edit tab labels and content and see the effects immediately in Live Preview. 
+* You can select one of the predefined themes (Basic and Tabby) or the Minimal theme that makes it easy to add your own styles.  Optimized for the default WordPress themes and the Hello Elementor theme. Some custom CSS styling would likely still be needed in your own implementation; this plugin just provides a lightweight tab/accordion block with minimal styling options. The idea is you would extend this with your own CSS as needed.
+* Visit the [Plethora Design site](https://www.plethoradesign.com/tabs-accordions-documentation/) for the documentation!
+
 
 == Installation ==
 
-Installing Tabs + Accordions in the default wordpress editor directly:
---------------------------------------------------------------------
-1. In the editor, click the "+" icon at the top left (next to the "W" icon). When you hover over it, a tooltip should show something like "Toggle block inserter"
-2. Search for the plugin using keywords like "plethora" and "tabs", and you should see the Tabs + Accordions plugin listed. Clicking on it will immediately install and insert the block for the plugin, so you can get started right away!
  
  
 Traditional plugin installation method:
 ---------------------------------------
-1. Upload the plugin files to the `/wp-content/plugins/plethora-tabs-accordions` directory, or install the plugin through the WordPress plugins screen directly.
+1. Upload the plugin files to the `/wp-content/plugins/plethora-tabs-accordions-pro` directory, or install the plugin through the WordPress plugins screen directly.
 2. Activate the plugin through the 'Plugins' screen in WordPress
 
 == Frequently Asked Questions ==
@@ -32,15 +34,13 @@ Traditional plugin installation method:
 Yes - visit the plugin settings page to change any of the settings.  If you have a lot of tabs or accordions on your site, you may want to change which theme or layout is used by default, or override any of the other default settings.
 To change the global default options, go to the wordpress dashboard and navigate to "Settings" -> "Tabs + Accordions"  ( /wp-admin/options-general.php?page=plethoraplugins-tabs-settings ) 
 
-= A lot of blocks in the editor seem to break when I upgrade them.  Will that happen to my Tabs + Accordions blocks? =
+= A lot of blocks in the editor seem to break when I upgrade them.  Will that happen to my Tabs + Accordions (Pro) blocks? =
 
 This plugin uses Wordpress's 'dynamic blocks' approach. This means that the HTML for the site itself is generated as soon as someone visits the page. By not saving the HTML output of the block (except for the inner tab content), any small updates to the way the block renders will happen automatically when the plugin updates, behind-the-scenes.
 
 = How do I create a custom theme? =
 You can select the Minimal theme, which provides just enough CSS for the tabs/accordion to be usable (but not pretty). 
 
-= Does this plugin support nested tabs or accordions? =
-Please note that this plugin does not support nesting accordions inside accordions, but accordions or tabs nested inside tabs appear to work OK. Nested tabs/accordions are not fully tested or supported, so please keep that in mind when using this plugin.  
 
 == Screenshots ==
 
@@ -132,25 +132,14 @@ Please note that this plugin does not support nesting accordions inside accordio
 1. Added option "JS Loading Behavior" to allow control over when JS will load. Previously, JS would load on any page, even those that did not have an accordion or tab block. With this update, the default behavior will be to only load the required JS if the page has one of these blocks. Select one of the other options to either load the JS on ALL pages or on NONE (none will break your site unless you add the required JS in some other way).  If you are using another plugin for bundling JS assets, you might choose to load the JS on all pages in your "main" JS bundle to reduce the number of http requests if your site uses the tabs on many (or on the most visited) pages.
 2. Tested with Wordpress 6.2.2
 
+= 1.1.1 =
 1. Re-namespaced all custom data attributes to "data-pds-tabs--". If you specifically targeted any of these data- elements in your own CSS, those would need to be updated to use this namespace as well.
-
-
-= 1.1.5 =
-Tested with WordPress 6.7.
-
-= 1.3 and 1.4.x =
-addressed low-level content escape vulnerability
-
 
 == Documentation ==
 
-* Quickly switch between horizontal/vertical or accordion layout
-* Ipportant: Avoid using tabs with the same labels, or else you will need to override the anchor so that the code can uniquely identify your tab or accordion header.
-* Edit tab labels and content and see the effects immediately in Live Preview. 
-* You can select one of the predefined themes (Basic and Tabby) or the Minimal theme that makes it easy to add your own styles.  Optimized for the default WordPress themes and the Hello Elementor theme. Some custom CSS styling would likely still be needed in your own implementation; this plugin just provides a lightweight tab/accordion block with minimal styling options. The idea is you would extend this with your own CSS as needed.
-* Visit the [Plethora Plugins site](https://plethoraplugins.com/tabs-accordions/) for demos!
+IMPORTANT: Avoid using tabs with the same labels, or else you will need to override the anchor so that the code can uniquely identify your tab or accordion header.
 
-Visit [the documentation page](https://plethoraplugins.com/tabs-accordions/documentation/) for documentation.
+Visit [the documentation page](https://www.plethoradesign.com/tabs-accordions-documentation/) for documentation.
 
 
 

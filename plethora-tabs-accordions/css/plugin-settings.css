@@ -1,28 +1,51 @@
 
-.plethoraplugins_settings-sections {
+.plethoraplugins_pro_settings-sections {
 	margin-right: 1rem;
     display: flex;
     flex-direction: column;
     gap: 2rem;
 }
 @media all and (min-width: 66.625em) {
-	.plethoraplugins_settings-sections {
+	.plethoraplugins_pro_settings-sections {
 		display: grid;
 		grid-template-columns: 1fr 1fr;
 		gap: 2rem;
 	}
+	.plethoraplugins_pro_settings-section.plethoraplugins_pro_settings-section-license {
+		display: flex;
+	}
+	.plethoraplugins_pro_settings-section.plethoraplugins_pro_settings-section-license > h2 {
+		display: flex;
+		align-items: center;
+	}
+	.plethoraplugins_pro_settings-section.plethoraplugins_pro_settings-section-license .form-table {
+		display: flex;
+	}
+	.plethoraplugins_pro_settings-section.plethoraplugins_pro_settings-section-license .form-table tbody {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
+	.plethoraplugins_pro_settings-section.plethoraplugins_pro_settings-section-license .form-table tr {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+	}
+	.plethoraplugins_pro_settings-section.plethoraplugins_pro_settings-section-license .form-table th {
+		text-align: center;
+	}
 }
 @media all and (min-width: 110em) {
-	.plethoraplugins_settings-sections {
+	.plethoraplugins_pro_settings-sections {
 		grid-template-columns: 1fr 1fr 1fr 1fr;
 		gap: 1rem;
 	}
 }
 
-.plethoraplugins_settings-section {
+.plethoraplugins_pro_settings-section {
     background: #fff;
 }
-.plethoraplugins_settings-section > h2 {
+.plethoraplugins_pro_settings-section > h2 {
     background: #007A8B;
     color: #fff;
     padding: 1rem;
@@ -31,51 +54,51 @@
 
 
 	
-.plethoraplugins_settings-section .plethoraplugins_settings-section > h2 {
+.plethoraplugins_pro_settings-section .plethoraplugins_pro_settings-section > h2 {
     background: #004d57;
     font-size: 1.2em;
     padding-top: .5em;
     padding-bottom: .5em;
 }
-.plethoraplugins_settings-section .form-table th, 
-.plethoraplugins_settings-section .form-table td {
+.plethoraplugins_pro_settings-section .form-table th, 
+.plethoraplugins_pro_settings-section .form-table td {
     padding: .5rem 1rem;
 	width: auto;
 	vertical-align: middle;
 }
-.plethoraplugins_settings-section .form-table td {
+.plethoraplugins_pro_settings-section .form-table td {
     white-space: nowrap;
 }
-.plethoraplugins_settings-section .form-table th {
+.plethoraplugins_pro_settings-section .form-table th {
     width: 12em;
     text-align: right;
 	vertical-align: middle;
 }
 
 @media screen and (max-width: 782px) {
-	.plethoraplugins_settings-section .form-table th {
+	.plethoraplugins_pro_settings-section .form-table th {
 		text-align: inherit;
 	}
-	.plethoraplugins_settings-section .form-table td .plethoraplugins_pro-only {
+	.plethoraplugins_pro_settings-section .form-table td .plethoraplugins_pro_pro-only {
 		position: absolute;
 		top: -.5rem;
 		right: 1rem;
 		transform: translateY(-100%);
 	}
 
-	.plethoraplugins_settings-section .form-table td {
+	.plethoraplugins_pro_settings-section .form-table td {
 		position: relative;
 	}
 }
 
-.plethoraplugins_settings-section .form-table tr:nth-child(even) {
+.plethoraplugins_pro_settings-section .form-table tr:nth-child(even) {
     background-color: #f5feff;
 }
 
-.plethoraplugins_settings-section table.form-table {
+.plethoraplugins_pro_settings-section table.form-table {
     margin: 0
 }
-.plethoraplugins_settings-form-actions {
+.plethoraplugins_pro_settings-form-actions {
     display: flex;
     justify-content: center;
     max-width: 20rem;
@@ -83,10 +106,10 @@
 	gap: 1rem;
 }
 
-.plethoraplugins_settings-form-actions input.plethoraplugins_settings-form-action-button,
-.plethoraplugins_settings-form-actions input.plethoraplugins_settings-form-action-button:hover,
-.plethoraplugins_settings-form-actions input.plethoraplugins_settings-form-action-button:active,
-.plethoraplugins_settings-form-actions input.plethoraplugins_settings-form-action-button:focus {
+.plethoraplugins_pro_settings-form-actions input.plethoraplugins_pro_settings-form-action-button,
+.plethoraplugins_pro_settings-form-actions input.plethoraplugins_pro_settings-form-action-button:hover,
+.plethoraplugins_pro_settings-form-actions input.plethoraplugins_pro_settings-form-action-button:active,
+.plethoraplugins_pro_settings-form-actions input.plethoraplugins_pro_settings-form-action-button:focus {
     padding-left: 2em;
     padding-right: 2em;
     display: inline-block;
@@ -107,46 +130,59 @@
 	background: #000;
 	color: #fff;
 }
-.plethoraplugins_settings-form-actions input.plethoraplugins_settings-form-action-button.plethoraplugins_settings-form-save-button {
+.plethoraplugins_pro_settings-form-actions input.plethoraplugins_pro_settings-form-action-button.plethoraplugins_pro_settings-form-save-button {
     font-size: xx-large;
 	background: #006370;
 	color: #fff;
 }
-.wp-core-ui .plethoraplugins_settings-section .button, 
-.wp-core-ui .plethoraplugins_settings-section .button-secondary {
+.wp-core-ui .plethoraplugins_pro_settings-section .button, 
+.wp-core-ui .plethoraplugins_pro_settings-section .button-secondary {
     color: #004d57;
     border-color: #004d57;
 }
-.plethoraplugins_svg-selector-preview svg {
+.plethoraplugins_pro_svg-selector-preview svg {
     width: 100%;
     height: 100%;
 }
 
-.plethoraplugins_svg-selector-preview {
+.plethoraplugins_pro_svg-selector-preview {
     width: 1rem;
     height: 1rem;
     display: inline-block;
     margin-right: 1rem;
 }
-.plethoraplugins_svg-selector-preview svg {
+.plethoraplugins_pro_svg-selector-preview svg {
 	fill: currentColor;
 	stroke: currentColor;
 }
-.plethoraplugins_svg-selector-button {
+.plethoraplugins_pro_svg-selector-button {
 	cursor: pointer;
 }
-.plethoraplugins_svg-selector-button:disabled {
+.plethoraplugins_pro_svg-selector-button:disabled {
 	cursor: not-allowed;
 }
 
-.plethoraplugins_pro-only {
+.plethoraplugins_pro_pro-only {
 	color: red;
 }
+#plethoraplugins_pro_tabs_setting_license_key {
+    font-size: x-large;
+}
+.plethoraplugins_pro_-has-license .plethoraplugins_pro_pro-only {
+	color: green
+}
+.plethoraplugins_pro_-no-license #plethoraplugins_pro_tabs_setting_license_key {
+	color: red;
+	border-color: red;
+}
+.plethoraplugins_pro_-has-license #plethoraplugins_pro_tabs_setting_license_key {
+	border-color: green;
+}
 
-.plethoraplugins_visually-hidden,
-#plethoraplugins_tabs_setting_accordionicontwostateclosed,
-#plethoraplugins_tabs_setting_accordionicontwostateopen,
-#plethoraplugins_tabs_setting_accordioniconsinglestate {
+.plethoraplugins_pro_visually-hidden,
+#plethoraplugins_pro_tabs_setting_accordionicontwostateclosed,
+#plethoraplugins_pro_tabs_setting_accordionicontwostateopen,
+#plethoraplugins_pro_tabs_setting_accordioniconsinglestate {
   clip: rect(0 0 0 0);
   clip-path: inset(50%);
   height: 1px;
@@ -156,14 +192,14 @@
   width: 1px;
 }
 
-.plethoraplugins_svg-icon-button svg {
+.plethoraplugins_pro_svg-icon-button svg {
     width: 100%;
     height: 100%;
     fill: currentColor;
     stroke: currentColor;
 }
 
-.plethoraplugins_svg-icon-button {
+.plethoraplugins_pro_svg-icon-button {
     width: 24px;
     height: 24px;
 	color: #007A8B;
@@ -173,24 +209,24 @@
     cursor: pointer;
 }
 
-.plethoraplugins_svg-icon-button-list {
+.plethoraplugins_pro_svg-icon-button-list {
     display: flex;
     gap: 1rem;
     flex-wrap: wrap;
 }
 
-#plethoraplugins__custom_icon_input {
+#plethoraplugins_pro__custom_icon_input {
 	resize: horizontal;
 	height: 100%;
     width: 15rem;
 }
-#plethoraplugins__custom_icon_input_wrapper {
+#plethoraplugins_pro__custom_icon_input_wrapper {
     display: flex;
     gap: 0.5rem;
     background: #efefef;
     padding: 2px;
 }
-#plethoraplugins_tabs_setting_mobilebreakpoint {
+#plethoraplugins_pro_tabs_setting_mobilebreakpoint {
     width: 5rem;
     margin-right: .5rem;
 }

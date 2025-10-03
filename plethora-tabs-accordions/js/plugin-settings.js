@@ -1,6 +1,6 @@
 ;(function($){
 	const dataNS = 'pds-tabs--';
-	const ns = 'plethoraplugins_';
+	const ns = 'plethoraplugins_pro_';
 	const icons = [
 	{
         "html": '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M5 13v-2h14v2Z"/></svg>',
