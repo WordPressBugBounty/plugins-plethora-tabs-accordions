@@ -1,8 +1,8 @@
-=== Plethora Plugins Tabs + Accordions (Pro) ===
+=== Plethora Plugins Tabs + Accordions ===
 Contributors:      Plethora Plugins
 Tags:              block
-Tested up to:      6.8.2
-Stable tag:        2.1
+Tested up to:      6.9
+Stable tag:        2.2
 License:           GPL-2.0-or-later
 License URI:       https://www.gnu.org/licenses/gpl-2.0.html
 

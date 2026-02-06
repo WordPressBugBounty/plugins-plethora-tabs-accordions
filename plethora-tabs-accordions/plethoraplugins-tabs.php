@@ -4,7 +4,7 @@
  * Description:       User-friendly tabs or accordion block for the default Wordpress editor. Quickly switch between horizontal/vertical or accordion layout, change the plugin theme, and edit tab labels and content and see the effects immediately in Live Preview. You can select one of the predefined themes Basic and Tabby, and a Minimal theme that makes it easy to add your own styles.  
  * Requires at least: 5.9
  * Requires PHP:      7.0
- * Version:           2.1
+ * Version:           2.2
  * Plugin URI: 		  https://plethoradesign.com
  * Author:            Plethora Plugins
  * Author URI:        https://plethoradesign.com
