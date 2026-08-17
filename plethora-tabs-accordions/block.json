@@ -2,7 +2,7 @@
 	"$schema": "https://json.schemastore.org/block.json",
 	"apiVersion": 3,
 	"name": "plethoraplugins/tabs",
-	"version": "2.2",
+	"version": "2.3",
 	"title": "Tabs or Accordion",
 	"category": "widgets",
 	"icon": "image",
@@ -72,7 +72,7 @@
 	"supports": {
 		"html": false
 	},
-	"textdomain": "plethoraplugins-tabs",
+	"textdomain": "plethora-tabs-accordions",
 	"editorScript": "file:./build/index.js",
 	"editorStyle": "file:./build/index.css",
 	"style": "file:./build/style-index.css"

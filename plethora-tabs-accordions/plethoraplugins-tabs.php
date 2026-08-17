@@ -4,13 +4,13 @@
  * Description:       User-friendly tabs or accordion block for the default Wordpress editor. Quickly switch between horizontal/vertical or accordion layout, change the plugin theme, and edit tab labels and content and see the effects immediately in Live Preview. You can select one of the predefined themes Basic and Tabby, and a Minimal theme that makes it easy to add your own styles.  
  * Requires at least: 5.9
  * Requires PHP:      7.0
- * Version:           2.2
+ * Version:           2.3
  * Plugin URI: 		  https://plethoradesign.com
  * Author:            Plethora Plugins
  * Author URI:        https://plethoradesign.com
  * License:           GPL-2.0-or-later
  * License URI:       https://www.gnu.org/licenses/gpl-2.0.html
- * Text Domain:       plethoraplugins-tabs
+ * Text Domain:       plethora-tabs-accordions
  *
  * @package           plethoraplugins
  * @since 1.0.0
@@ -45,8 +45,12 @@ add_action( 'admin_notices', function() {
 	$faq_schema_enabled = plethoraplugins_pro_tabs_get_defaults('enableFaqSchema');
 	if(!$faq_schema_enabled && current_user_can('manage_options') && !get_option('plethoraplugins_pro_tabs_faq_notice_dismissed')) {
 		echo '<div class="notice notice-info is-dismissible" data-notice="plethoraplugins_pro_tabs_faq_notice"><p>';
-		echo '<strong>Tabs + Accordions (Pro):</strong> ';
-		echo __( 'New FAQ Schema feature available! Enable it in the <a href="'. esc_url( plethoraplugins_pro_tabs_get_settings_url() ) .'">plugin settings</a> to automatically add structured data to your accordions for better SEO.' );
+		echo '<strong>' . esc_html__( 'Tabs + Accordions (Pro):', 'plethora-tabs-accordions' ) . '</strong> ';
+		printf(
+			/* translators: %s: URL of the plugin settings page. */
+			wp_kses( __( 'New FAQ Schema feature available! Enable it in the <a href="%s">plugin settings</a> to automatically add structured data to your accordions for better SEO.', 'plethora-tabs-accordions' ), array( 'a' => array( 'href' => array() ) ) ),
+			esc_url( plethoraplugins_pro_tabs_get_settings_url() )
+		);
 		echo '</p></div>';
 	}
 });
@@ -266,7 +270,7 @@ function plethoraplugins_pro_tabs_sprint_input($key, $options=NULL, $optionDefin
     elseif($type == 'select') {
         $o .= '<select id="plethoraplugins_pro_tabs_setting_' . esc_attr($key) . '" name="plethoraplugins_tabs_options[' . esc_attr($key) . ']" data-pds-tabs--default="" class="' . esc_attr($class) . '">';
         foreach($def["options"] as $value=>$label){
-            $o .= '<option value="' . esc_attr($value) . '" ' . (($options[$key] == $value) ? 'selected' : ''). '>' . wp_strip_all_tags($label) . "</option>";
+            $o .= '<option value="' . esc_attr($value) . '" ' . (($options[$key] == $value) ? 'selected' : ''). '>' . esc_html( wp_strip_all_tags($label) ) . "</option>";
         }
         $o .= '</select>';
     }
@@ -284,59 +288,86 @@ function plethoraplugins_pro_tabs_sprint_input($key, $options=NULL, $optionDefin
 	if(isset($def['inputSuffix'])) $o .= $def['inputSuffix'];
     return $o;
 }
+function plethoraplugins_pro_tabs_get_allowed_input_html(){
+    return array(
+        'input' => array(
+            'id' => true,
+            'name' => true,
+            'type' => true,
+            'value' => true,
+            'placeholder' => true,
+            'checked' => true,
+            'class' => true,
+            'data-pds-tabs--default' => true,
+        ),
+        'select' => array(
+            'id' => true,
+            'name' => true,
+            'class' => true,
+            'data-pds-tabs--default' => true,
+        ),
+        'option' => array(
+            'value' => true,
+            'selected' => true,
+        ),
+    );
+}
+function plethoraplugins_pro_tabs_print_input($key){
+    echo wp_kses( plethoraplugins_pro_tabs_sprint_input($key), plethoraplugins_pro_tabs_get_allowed_input_html() );
+}
 function plethoraplugins_pro_tabs_theme(){
-    echo plethoraplugins_pro_tabs_sprint_input('theme');
+    plethoraplugins_pro_tabs_print_input('theme');
 }
 function plethoraplugins_pro_tabs_layout(){
-    echo plethoraplugins_pro_tabs_sprint_input('layout');
+    plethoraplugins_pro_tabs_print_input('layout');
 }
 function plethoraplugins_pro_tabs_jsloadingbehavior(){
-    echo plethoraplugins_pro_tabs_sprint_input('jsloadingbehavior');
+    plethoraplugins_pro_tabs_print_input('jsloadingbehavior');
 }
 function plethoraplugins_pro_tabs_deletesettingsonuninstall(){
-    echo plethoraplugins_pro_tabs_sprint_input('deletesettingsonuninstall');
+    plethoraplugins_pro_tabs_print_input('deletesettingsonuninstall');
 }
 function plethoraplugins_pro_tabs_enablefaqschema(){
-    echo plethoraplugins_pro_tabs_sprint_input('enablefaqschema');
+    plethoraplugins_pro_tabs_print_input('enablefaqschema');
 }
 function plethoraplugins_pro_tabs_htabresponsive(){
-    echo plethoraplugins_pro_tabs_sprint_input('htabresponsive');
+    plethoraplugins_pro_tabs_print_input('htabresponsive');
 }
 function plethoraplugins_pro_tabs_hresponsiveaccordionscollapsedinitially(){
-    echo plethoraplugins_pro_tabs_sprint_input('hresponsiveaccordionscollapsedinitially');
+    plethoraplugins_pro_tabs_print_input('hresponsiveaccordionscollapsedinitially');
 }
 function plethoraplugins_pro_tabs_mobilebreakpoint(){
-    echo plethoraplugins_pro_tabs_sprint_input('mobilebreakpoint');
+    plethoraplugins_pro_tabs_print_input('mobilebreakpoint');
 }
 function plethoraplugins_pro_tabs_accordionheadinglevel(){
-    echo plethoraplugins_pro_tabs_sprint_input('accordionheadinglevel');
+    plethoraplugins_pro_tabs_print_input('accordionheadinglevel');
 }
 
 function plethoraplugins_pro_tabs_accordionautoclose(){
-    echo plethoraplugins_pro_tabs_sprint_input('accordionautoclose');
+    plethoraplugins_pro_tabs_print_input('accordionautoclose');
 }
 function plethoraplugins_pro_tabs_initialactivetab(){
-    echo plethoraplugins_pro_tabs_sprint_input('initialactivetab');
+    plethoraplugins_pro_tabs_print_input('initialactivetab');
 }
 function plethoraplugins_pro_tabs_accordionicontype(){
-    echo plethoraplugins_pro_tabs_sprint_input('accordionicontype');
+    plethoraplugins_pro_tabs_print_input('accordionicontype');
 }
 function plethoraplugins_pro_tabs_accordioniconsize(){
-    echo plethoraplugins_pro_tabs_sprint_input('accordioniconsize');
+    plethoraplugins_pro_tabs_print_input('accordioniconsize');
 }
 function plethoraplugins_pro_tabs_accordionicontwostateclosed(){
-    echo plethoraplugins_pro_tabs_sprint_input('accordionicontwostateclosed');
+    plethoraplugins_pro_tabs_print_input('accordionicontwostateclosed');
 }
 function plethoraplugins_pro_tabs_accordionicontwostateopen(){
-    echo plethoraplugins_pro_tabs_sprint_input('accordionicontwostateopen');
+    plethoraplugins_pro_tabs_print_input('accordionicontwostateopen');
 }
 function plethoraplugins_pro_tabs_accordioniconsinglestate(){
-    echo plethoraplugins_pro_tabs_sprint_input('accordioniconsinglestate');
+    plethoraplugins_pro_tabs_print_input('accordioniconsinglestate');
 }
 
 function plethoraplugins_pro_tabs_register_settings() {
     register_setting( 'plethoraplugins_tabs_options', 'plethoraplugins_tabs_options', 'plethoraplugins_pro_tabs_options_validate' );
-    add_settings_section( 'default_settings', __('Site-Wide Default Settings'), 'plethoraplugins_pro_tabs_settings_text', 'plethoraplugins_pro_tabs' );
+    add_settings_section( 'default_settings', __('Site-Wide Default Settings', 'plethora-tabs-accordions'), 'plethoraplugins_pro_tabs_settings_text', 'plethoraplugins_pro_tabs' );
     $optionDefinitions = plethoraplugins_pro_tabs_get_option_definitions();
 	$optionDefinitionsBySection = [];
     foreach($optionDefinitions as $key=>$def){
@@ -345,7 +376,7 @@ function plethoraplugins_pro_tabs_register_settings() {
 	$sectionLabels = plethoraplugins_pro__tabs_sections_labels;
 	foreach($optionDefinitionsBySection as $section=>$sectionDefs) {
 		$sectionLabel = isset($sectionLabels[$section]) ? $sectionLabels[$section] : $section;
-		add_settings_section( $section, __($sectionLabel), 'plethoraplugins_pro_tabs_settings_text', 'plethoraplugins_pro_tabs_' . $section );
+		add_settings_section( $section, $sectionLabel, 'plethoraplugins_pro_tabs_settings_text', 'plethoraplugins_pro_tabs_' . $section );
 		foreach($sectionDefs as $key=>$def){
 			add_settings_field( 
 				'plethoraplugins_pro_tabs_' . $key, $def['label'], 
@@ -432,7 +463,7 @@ function plethoraplugins_pro_tabs_extract_answers_from_content($content, $questi
     if(preg_match_all('/<div[^>]*class="[^"]*js-plethoraplugins-tab-panel[^"]*"[^>]*>(.*?)<\/div>/s', $content, $matches)) {
         foreach($matches[1] as $index => $match) {
             // Clean up the content and get text
-            $clean_content = trim(strip_tags($match));
+            $clean_content = trim(wp_strip_all_tags($match));
             if(!empty($clean_content)) {
                 $answers[$index] = $clean_content;
             }
@@ -440,7 +471,7 @@ function plethoraplugins_pro_tabs_extract_answers_from_content($content, $questi
     } else if(preg_match_all('/<div class="pds-accordion__content">(.*?)<\/div>/s', $content, $matches)) {
         // Fallback for accordion content
         foreach($matches[1] as $index => $match) {
-            $clean_content = trim(strip_tags($match));
+            $clean_content = trim(wp_strip_all_tags($match));
             if(!empty($clean_content)) {
                 $answers[$index] = $clean_content;
             }
@@ -448,7 +479,7 @@ function plethoraplugins_pro_tabs_extract_answers_from_content($content, $questi
     } else {
         // Last fallback: split by paragraphs
         $content_blocks = preg_split('/<\/?(p|div)[^>]*>/i', $content);
-        $clean_blocks = array_filter(array_map('trim', array_map('strip_tags', $content_blocks)));
+        $clean_blocks = array_filter(array_map('trim', array_map('wp_strip_all_tags', $content_blocks)));
         $answers = array_slice(array_values($clean_blocks), 0, $question_count);
     }
     
@@ -490,7 +521,7 @@ function plethoraplugins_pro_tab_render_callback( $block_attributes, $content ) 
             $parentAccordionHeadingLevel = (isset($block_attributes['parentAccordionHeadingLevel']) && $block_attributes['parentAccordionHeadingLevel']) ? $block_attributes['parentAccordionHeadingLevel'] : 'h3';
             $accordionHeadingLevel = $accordionHeadingLevelOverride ? $accordionHeadingLevelOverride : $parentAccordionHeadingLevel;
 			$accordionHeadingLevelInteger = intval(ltrim($accordionHeadingLevel, 'h'));
-            $label = (isset($block_attributes['label']) && $block_attributes['label']) ? $block_attributes['label'] : __('Tab');
+            $label = (isset($block_attributes['label']) && $block_attributes['label']) ? $block_attributes['label'] : __('Tab', 'plethora-tabs-accordions');
             $anchor = isset($block_attributes['anchor']) ? $block_attributes['anchor'] : null;
             $finalAnchor = $anchor ? $anchor : plethoraplugins_pro_tabs_generate_anchor($label);
             return '<div id="' . $finalAnchor . '" class="pds-accordion__item pds-js-accordion-item pds-no-js" data-pds-tabs--initially-open="' . $initialActive . '" data-pds-tabs--click-to-close="true" data-pds-tabs--auto-close="' . $accordionAutoClose . '" data-pds-tabs--scroll="false" data-pds-tabs--scroll-offset="0" ' . plethoraplugins_pro_sprint_icon_atts( $block_attributes ) . '>
@@ -538,7 +569,7 @@ function plethoraplugins_pro_tabs_render_callback( $block_attributes, $content )
     
     
     foreach($tabLabels as $k=>$v){
-        if(!$v) $tabLabels[$k] = __('Tab') . ' ' . ($k + 1);
+        if(!$v) $tabLabels[$k] = __('Tab', 'plethora-tabs-accordions') . ' ' . ($k + 1);
     }
     foreach($tabIds as $k=>$v){
         if(!$v) $tabIds[$k] = plethoraplugins_pro_tabs_generate_anchor($tabLabels[$k]);
@@ -678,7 +709,7 @@ add_action( 'admin_enqueue_scripts', function(){
     }
     
 	if(plethoraplugins_pro_tabs_is_settings_page()){
-		wp_register_script( 'micromodal_js', 'https://unpkg.com/micromodal/dist/micromodal.min.js', null, null, true );
+		wp_register_script( 'micromodal_js', plugins_url( 'js/micromodal.min.js', __FILE__ ), array(), '0.4.10', true );
 		wp_enqueue_script('micromodal_js');
 		wp_register_style( 'plethoraplugins_pro_micromodal_css', plugins_url( '/css/micromodal.css', __FILE__ ), false, '1.1.3', 'all' );
 		wp_enqueue_style( 'plethoraplugins_pro_micromodal_css' );
@@ -709,11 +740,12 @@ add_action( 'admin_enqueue_scripts', function(){
 
 // Handle notice dismissal
 add_action('wp_ajax_dismiss_plethoraplugins_pro_tabs_notice', function() {
-	if(!wp_verify_nonce($_POST['nonce'], 'dismiss_notice')) {
+	$nonce = isset($_POST['nonce']) ? sanitize_text_field( wp_unslash( $_POST['nonce'] ) ) : '';
+	if(!wp_verify_nonce($nonce, 'dismiss_notice')) {
 		wp_die('Security check failed');
 	}
-	
-	$notice = sanitize_text_field($_POST['notice']);
+
+	$notice = isset($_POST['notice']) ? sanitize_text_field( wp_unslash( $_POST['notice'] ) ) : '';
 	if($notice == 'plethoraplugins_pro_tabs_faq_notice') {
 		update_option('plethoraplugins_pro_tabs_faq_notice_dismissed', true);
 	}
@@ -726,7 +758,7 @@ add_action('wp_ajax_dismiss_plethoraplugins_pro_tabs_notice', function() {
 function plethoraplugins_pro_tabs_render_settings_page_print_sections($sections){
 	if(!is_array($sections)) return;
 	 foreach($sections as $section=>$childSections) { ?>
-		<section class="plethoraplugins_pro_settings-section plethoraplugins_pro_settings-section-<?php print esc_attr_e($section) ?>">
+		<section class="plethoraplugins_pro_settings-section plethoraplugins_pro_settings-section-<?php echo esc_attr( $section ); ?>">
 		<?php  do_settings_sections( 'plethoraplugins_pro_tabs_' . $section ); 
 			
 			if($childSections) { 
@@ -740,16 +772,16 @@ function plethoraplugins_pro_tabs_render_settings_page(){
     ?>
 	<div>
     <h1>Plethora Tabs + Accordions</h1>
-    <h2><?php print __('by') ?> <a href="https://plethoradesign.com" target="_blank">Plethora Design</a></h2>
-	<p><a href="https://www.plethoradesign.com/tabs-accordions-documentation/" target="_blank"><?php print __('Documentation') ?></a></p>
+    <h2><?php echo esc_html__('by', 'plethora-tabs-accordions'); ?> <a href="https://plethoradesign.com" target="_blank">Plethora Design</a></h2>
+	<p><a href="https://www.plethoradesign.com/tabs-accordions-documentation/" target="_blank"><?php echo esc_html__('Documentation', 'plethora-tabs-accordions'); ?></a></p>
     <form class="plethoraplugins_pro_settings-form" action="options.php" method="post">
         <?php settings_fields( 'plethoraplugins_tabs_options' ); ?>
 		<div class="plethoraplugins_pro_settings-sections" >
 			 <?php plethoraplugins_pro_tabs_render_settings_page_print_sections(plethoraplugins_pro__tabs_sections_layout); ?>
 		</div>
 		<div class="plethoraplugins_pro_settings-form-actions">
-			<input name="reset" class="plethoraplugins_pro_settings-form-reset-button plethoraplugins_pro_settings-form-action-button" type="button" value="<?php esc_attr_e( __('Reset to defaults') ); ?>" />
-			<input name="submit" class="plethoraplugins_pro_settings-form-save-button plethoraplugins_pro_settings-form-action-button" type="submit" value="<?php esc_attr_e( __('Save') ); ?>" />
+			<input name="reset" class="plethoraplugins_pro_settings-form-reset-button plethoraplugins_pro_settings-form-action-button" type="button" value="<?php esc_attr_e( 'Reset to defaults', 'plethora-tabs-accordions' ); ?>" />
+			<input name="submit" class="plethoraplugins_pro_settings-form-save-button plethoraplugins_pro_settings-form-action-button" type="submit" value="<?php esc_attr_e( 'Save', 'plethora-tabs-accordions' ); ?>" />
 		</div>
     </form>
 	</div>
@@ -762,8 +794,8 @@ if(!defined( 'plethoraplugins__tabs' )) add_options_page( 'Plethora Tabs + Accor
 } );
 
 add_filter( 'plugin_action_links_' . plugin_basename(__FILE__), function ( $links ) {
-   $plugin_links[] = '<a href="' . esc_url( plethoraplugins_pro_tabs_get_settings_url() ) . '" >' . esc_html__( 'Settings' ) . '</a>';
-   $plugin_links[] = '<a href="' . esc_url( 'https://www.plethoradesign.com/tabs-accordions-documentation/' ) . '" target="_blank">' . esc_html__( 'Documentation' ) . '</a>';
+   $plugin_links[] = '<a href="' . esc_url( plethoraplugins_pro_tabs_get_settings_url() ) . '" >' . esc_html__( 'Settings', 'plethora-tabs-accordions' ) . '</a>';
+   $plugin_links[] = '<a href="' . esc_url( 'https://www.plethoradesign.com/tabs-accordions-documentation/' ) . '" target="_blank">' . esc_html__( 'Documentation', 'plethora-tabs-accordions' ) . '</a>';
 	return array_merge( $links, $plugin_links );
 });
 
@@ -774,8 +806,8 @@ add_filter( 'plugin_row_meta', function ( $links, $file ) {
 	}
 
 	$more = [
-		'<a href="' . esc_url(plethoraplugins_pro_tabs_get_settings_url()) . '" >' . esc_html__( 'Settings' ) . '</a>',
-		'<a href="' . esc_url( 'https://www.plethoradesign.com/tabs-accordions-documentation/' ) . '" target="_blank" >' . esc_html__( 'Documentation' ) . '</a>',
+		'<a href="' . esc_url(plethoraplugins_pro_tabs_get_settings_url()) . '" >' . esc_html__( 'Settings', 'plethora-tabs-accordions' ) . '</a>',
+		'<a href="' . esc_url( 'https://www.plethoradesign.com/tabs-accordions-documentation/' ) . '" target="_blank" >' . esc_html__( 'Documentation', 'plethora-tabs-accordions' ) . '</a>',
 	];
 
 	return array_merge( $links, $more );

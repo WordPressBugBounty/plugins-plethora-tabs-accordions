@@ -1,12 +1,12 @@
-=== Plethora Plugins Tabs + Accordions ===
-Contributors:      Plethora Plugins
+=== Plethora Tabs + Accordions ===
+Contributors:      plethoraplugins
 Tags:              block
-Tested up to:      6.9
-Stable tag:        2.2
+Tested up to:      7.1
+Stable tag:        2.3
 License:           GPL-2.0-or-later
 License URI:       https://www.gnu.org/licenses/gpl-2.0.html
 
-Gutenberg-native block for responsive and accessible tabs; no need for shortcodes or similar workarounds. Add tabs or accordions right in the block editor. Outputs clean HTML and unopinionated CSS.
+Gutenberg-native block for responsive, accessible tabs and accordions right in the block editor. Outputs clean HTML and unopinionated CSS.
 
 == Description ==
 
@@ -134,6 +134,12 @@ You can select the Minimal theme, which provides just enough CSS for the tabs/ac
 
 = 1.1.1 =
 1. Re-namespaced all custom data attributes to "data-pds-tabs--". If you specifically targeted any of these data- elements in your own CSS, those would need to be updated to use this namespace as well.
+
+= 2.2 =
+* Minor code changes and testing with WordPress 7.0.
+
+= 2.3 =
+* Tested with WordPress 7.1 and fixed minor code issues including escaping output.
 
 == Documentation ==
 
