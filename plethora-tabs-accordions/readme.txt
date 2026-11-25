@@ -1,8 +1,8 @@
 === Plethora Tabs + Accordions ===
 Contributors:      plethoraplugins
 Tags:              block
-Tested up to:      7.1
-Stable tag:        2.3
+Tested up to:      7.2
+Stable tag:        2.4
 License:           GPL-2.0-or-later
 License URI:       https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -140,6 +140,9 @@ You can select the Minimal theme, which provides just enough CSS for the tabs/ac
 
 = 2.3 =
 * Tested with WordPress 7.1 and fixed minor code issues including escaping output.
+
+= 2.4 =
+* Tested with WordPress 7.2.
 
 == Documentation ==
 
